@@ -38,13 +38,41 @@ class Persona {
         return this._genero;
     }
     set genero(nuevoGenero) {
-        this._genero = nuevoGenero;
+        if (typeof nuevoGenero === "string" && nuevoGenero.length === 1) {
+            switch (nuevoGenero.toUpperCase()) {
+                case 'M':
+                    this._genero="Masculino"
+                    break;
+                case 'F':
+                    this._genero= "Femenino"
+                    break;
+                default:
+                    console.log("El género debe ser valido")
+                    break;
+            }
+            
+        }else{
+            console.log("Debe ser un solo caracter")
+        }
+ 
     }
     get departamento() {
         return this._departamento;
     }
     set departamento(nuevoDepartamento) {
-        this._departamento = nuevoDepartamento;
+        switch (nuevoDepartamento) {
+            case 'Ventas':
+                this._departamento = "Usted pertenece al departamento de Ventas";
+                break;
+            case 'RRHH':
+                this._departamento = "Usted pertenece al departamento de Recursos Humanos";
+                break;
+            case 'Administración':
+                this._departamento = "Usted pertenece al departamento Administrativo";
+                break;
+            default:
+                console.log("El departamento no existe.");
+        }
     }
     mostrarInformacion() {
         console.log(`ID: ${this._id}`);
@@ -59,6 +87,6 @@ persona1.mostrarInformacion();
 persona1.id = 2;
 persona1.nombre = "Ana Silvia Gómez";
 persona1.telefono = "98765432";
-persona1.genero = "Femenino";
-persona1.departamento = "Recursos Humanos";
+persona1.genero = "F";
+persona1.departamento = "Ventas";
 persona1.mostrarInformacion();
