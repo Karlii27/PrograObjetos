@@ -14,4 +14,8 @@ mongoose.connect(process.env.MONGO_URI)
 .catch((error)=> {console.log("Error al conectar a MongoB ", error)})
 
 //rutas
-app.use('/ap1/tareas')
+app.use('/ap1/tareas', taskRoutes)
+
+//Iniciar el servidor
+const PORT = process.env.PORT || 5000
+app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`))
